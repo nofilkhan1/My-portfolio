@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nofil Khan — Developer</title>
+  <meta name="description" content="Portfolio of Nofil Khan - Full Stack Developer, AI Enthusiast, and CS student at FAST-NUCES Lahore.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◼</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --fg: #1a1a1a;
+      --accent: #ff3b30;
+      --accent-2: #007aff;
+      --accent-3: #34c759;
+      --accent-4: #ff9500;
+      --border: #1a1a1a;
+      --shadow: #1a1a1a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      cursor: crosshair;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* ===== MARQUEE ===== */
+    .marquee {
+      background: var(--fg);
+      color: var(--bg);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 4px solid var(--border);
+    }
+
+    .marquee span {
+      display: inline-block;
+      animation: marqueeScroll 20s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg);
+      border-bottom: 4px solid var(--border);
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      padding: 18px 28px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--fg);
+      text-decoration: none;
+      border-right: 4px solid var(--border);
+      transition: all 0.12s ease;
+      cursor: pointer;
+      background: transparent;
+      border-top: none;
+      border-bottom: none;
+      border-left: none;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background: var(--fg);
+      color: var(--bg);
+    }
+
+    .nav-link:last-child { border-right: none; }
+
+    /* ===== CONTAINER ===== */
+    .portfolio {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 0 80px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 40px 80px;
+      border-bottom: 4px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-left .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-left .eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 4px;
+      background: var(--accent);
+    }
+
+    .hero-left h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 90px;
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -4px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      word-break: break-word;
+    }
+
+    .hero-left h1 .line {
+      display: block;
+    }
+
+    .hero-left h1 .line-1 {
+      color: var(--fg);
+    }
+
+    .hero-left h1 .line-2 {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 10px;
+      text-underline-offset: 6px;
+    }
+
+    .hero-left .tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      padding: 14px 24px;
+      background: var(--fg);
+      color: var(--bg);
+      display: inline-block;
+      border: 4px solid var(--border);
+      box-shadow: 8px 8px 0 var(--shadow);
+    }
+
+    .hero-left .location {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 36px;
+      color: var(--fg);
+      opacity: 0.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 18px 36px;
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.12s ease;
+      cursor: pointer;
+      border: 4px solid var(--border);
+      position: relative;
+    }
+
+    .btn:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0 var(--shadow);
+    }
+
+    .btn:active {
+      transform: translate(0, 0);
+      box-shadow: 0 0 0 var(--shadow);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    .btn-secondary:hover {
+      background: var(--fg);
+      color: var(--bg);
+    }
+
+    /* Hero Right - Brutalist Grid Composition */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .brutal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 70px);
+      grid-template-rows: repeat(4, 70px);
+      gap: 8px;
+      position: relative;
+    }
+
+    .grid-cell {
+      border: 4px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .grid-cell:hover {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+
+    .gc-red { background: var(--accent); }
+    .gc-blue { background: var(--accent-2); }
+    .gc-green { background: var(--accent-3); }
+    .gc-orange { background: var(--accent-4); }
+    .gc-black { background: var(--fg); }
+    .gc-white { background: white; }
+
+    .grid-cell:nth-child(1) { animation: gridPulse 3s ease-in-out infinite; }
+    .grid-cell:nth-child(2) { animation: gridPulse 3s ease-in-out infinite 0.2s; }
+    .grid-cell:nth-child(3) { animation: gridPulse 3s ease-in-out infinite 0.4s; }
+    .grid-cell:nth-child(4) { animation: gridPulse 3s ease-in-out infinite 0.6s; }
+    .grid-cell:nth-child(5) { animation: gridPulse 3s ease-in-out infinite 0.8s; }
+    .grid-cell:nth-child(6) { animation: gridPulse 3s ease-in-out infinite 1.0s; }
+    .grid-cell:nth-child(7) { animation: gridPulse 3s ease-in-out infinite 1.2s; }
+    .grid-cell:nth-child(8) { animation: gridPulse 3s ease-in-out infinite 1.4s; }
+    .grid-cell:nth-child(9) { animation: gridPulse 3s ease-in-out infinite 1.6s; }
+    .grid-cell:nth-child(10) { animation: gridPulse 3s ease-in-out infinite 1.8s; }
+    .grid-cell:nth-child(11) { animation: gridPulse 3s ease-in-out infinite 2.0s; }
+    .grid-cell:nth-child(12) { animation: gridPulse 3s ease-in-out infinite 2.2s; }
+    .grid-cell:nth-child(13) { animation: gridPulse 3s ease-in-out infinite 2.4s; }
+    .grid-cell:nth-child(14) { animation: gridPulse 3s ease-in-out infinite 2.6s; }
+    .grid-cell:nth-child(15) { animation: gridPulse 3s ease-in-out infinite 2.8s; }
+    .grid-cell:nth-child(16) { animation: gridPulse 3s ease-in-out infinite 3.0s; }
+
+    @keyframes gridPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(0.92); }
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      padding: 80px 40px;
+      border-bottom: 4px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .section-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 18px;
+      background: var(--fg);
+      color: var(--bg);
+      border: 4px solid var(--border);
+      letter-spacing: 1px;
+    }
+
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+    }
+
+    /* ===== EDUCATION ===== */
+    .edu-card {
+      border: 4px solid var(--border);
+      padding: 48px;
+      background: white;
+      position: relative;
+      transition: all 0.12s ease;
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-2);
+      border: 4px solid var(--border);
+      z-index: -1;
+      transition: all 0.12s ease;
+    }
+
+    .edu-card:hover {
+      transform: translate(-6px, -6px);
+    }
+
+    .edu-card:hover::before {
+      top: 18px;
+      left: 18px;
+    }
+
+    .edu-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .edu-card .school {
+      font-family: 'Space Mono', monospace;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    .edu-card .grad {
+      display: inline-block;
+      padding: 10px 24px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: var(--accent-3);
+      color: var(--fg);
+      border: 4px solid var(--border);
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    .skill-card {
+      border: 4px solid var(--border);
+      padding: 32px;
+      background: white;
+      position: relative;
+      transition: all 0.12s ease;
+    }
+
+    .skill-card:hover {
+      transform: translate(-6px, -6px);
+      box-shadow: 12px 12px 0 var(--shadow);
+    }
+
+    .skill-card:nth-child(3n+1)::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 100%;
+      height: 100%;
+      background: var(--accent);
+      border: 4px solid var(--border);
+      z-index: -1;
+    }
+
+    .skill-card:nth-child(3n+2)::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-2);
+      border: 4px solid var(--border);
+      z-index: -1;
+    }
+
+    .skill-card:nth-child(3n+3)::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-4);
+      border: 4px solid var(--border);
+      z-index: -1;
+    }
+
+    .skill-card h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 4px solid var(--border);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      padding: 10px 18px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 3px solid var(--border);
+      background: var(--bg);
+      transition: all 0.12s ease;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      background: var(--fg);
+      color: var(--bg);
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0 var(--shadow);
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 32px;
+    }
+
+    .project-card {
+      border: 4px solid var(--border);
+      padding: 0;
+      background: white;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.12s ease;
+    }
+
+    .project-card:hover {
+      transform: translate(-8px, -8px);
+      box-shadow: 16px 16px 0 var(--shadow);
+    }
+
+    .project-card:nth-child(4n+1) .project-bar { background: var(--accent); }
+    .project-card:nth-child(4n+2) .project-bar { background: var(--accent-2); }
+    .project-card:nth-child(4n+3) .project-bar { background: var(--accent-3); }
+    .project-card:nth-child(4n+4) .project-bar { background: var(--accent-4); }
+
+    .project-bar {
+      height: 14px;
+      border-bottom: 4px solid var(--border);
+    }
+
+    .project-body {
+      padding: 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .project-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--accent);
+      min-width: 55px;
+      opacity: 0.4;
+    }
+
+    .project-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .project-repo {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--fg);
+      opacity: 0.5;
+      padding: 8px 14px;
+      background: var(--bg);
+      border: 3px solid var(--border);
+      display: inline-block;
+    }
+
+    .project-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--fg);
+      opacity: 0.75;
+    }
+
+    .project-footer {
+      padding: 18px 32px;
+      border-top: 4px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+    }
+
+    .project-footer span {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .project-arrow {
+      font-size: 22px;
+      transition: transform 0.12s ease;
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translateX(10px);
+    }
+
+    /* ===== INTERESTS ===== */
+    .interests-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .interest-pill {
+      padding: 18px 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border: 4px solid var(--border);
+      background: white;
+      transition: all 0.12s ease;
+      cursor: default;
+      position: relative;
+    }
+
+    .interest-pill::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-3);
+      border: 4px solid var(--border);
+      z-index: -1;
+      transition: all 0.12s ease;
+    }
+
+    .interest-pill:nth-child(4n+1)::before { background: var(--accent); }
+    .interest-pill:nth-child(4n+2)::before { background: var(--accent-2); }
+    .interest-pill:nth-child(4n+3)::before { background: var(--accent-3); }
+    .interest-pill:nth-child(4n+4)::before { background: var(--accent-4); }
+
+    .interest-pill:hover {
+      transform: translate(-6px, -6px);
+    }
+
+    .interest-pill:hover::before {
+      top: 12px;
+      left: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 80px 40px;
+      border-top: 4px solid var(--border);
+      background: var(--fg);
+      color: var(--bg);
+      text-align: center;
+    }
+
+    .footer p {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 32px;
+      opacity: 0.8;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .footer-link {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      color: var(--fg);
+      border: 4px solid var(--border);
+      text-decoration: none;
+      transition: all 0.12s ease;
+      font-family: 'Space Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .footer-link:hover {
+      background: var(--accent);
+      color: white;
+      transform: translate(-6px, -6px);
+      box-shadow: 10px 10px 0 rgba(255,255,255,0.15);
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== GLITCH TEXT ===== */
+    .glitch {
+      position: relative;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .glitch::before {
+      animation: glitch1 2.5s infinite linear alternate-reverse;
+      color: var(--accent);
+      z-index: -1;
+    }
+
+    .glitch::after {
+      animation: glitch2 3.5s infinite linear alternate-reverse;
+      color: var(--accent-2);
+      z-index: -2;
+    }
+
+    @keyframes glitch1 {
+      0%, 92%, 100% { transform: translate(0); clip-path: inset(0 0 0 0); }
+      93% { transform: translate(-4px, 2px); clip-path: inset(20% 0 60% 0); }
+      94% { transform: translate(4px, -2px); clip-path: inset(50% 0 30% 0); }
+      95% { transform: translate(-2px, 3px); clip-path: inset(10% 0 70% 0); }
+      96% { transform: translate(0); clip-path: inset(0 0 0 0); }
+    }
+
+    @keyframes glitch2 {
+      0%, 88%, 100% { transform: translate(0); clip-path: inset(0 0 0 0); }
+      89% { transform: translate(4px, -2px); clip-path: inset(60% 0 10% 0); }
+      90% { transform: translate(-4px, 2px); clip-path: inset(30% 0 40% 0); }
+      91% { transform: translate(2px, -3px); clip-path: inset(70% 0 10% 0); }
+      92% { transform: translate(0); clip-path: inset(0 0 0 0); }
+    }
+
+    /* ===== NOISE OVERLAY ===== */
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-left h1 { font-size: 56px; letter-spacing: -2px; }
+      .brutal-grid { grid-template-columns: repeat(4, 50px); grid-template-rows: repeat(4, 50px); gap: 6px; }
+      .navbar { overflow-x: auto; }
+      .nav-link { padding: 14px 18px; font-size: 11px; letter-spacing: 1px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .section { padding: 60px 24px; }
+      .section-title { font-size: 32px; }
+      .edu-card { padding: 32px; }
+      .edu-card h3 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Noise Overlay -->
+  <div class="noise"></div>
+
+  <!-- Marquee -->
+  <div class="marquee">
+    <span>◼ NOFIL KHAN ◼ FULL STACK DEVELOPER ◼ AI ENTHUSIAST ◼ FAST-NUCES LAHORE ◼ OPEN TO WORK ◼ NOFIL KHAN ◼ FULL STACK DEVELOPER ◼ AI ENTHUSIAST ◼ FAST-NUCES LAHORE ◼ OPEN TO WORK ◼ </span>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#hero" class="nav-link active" onclick="setActive(this)">01 — Home</a>
+    <a href="#education" class="nav-link" onclick="setActive(this)">02 — Education</a>
+    <a href="#skills" class="nav-link" onclick="setActive(this)">03 — Skills</a>
+    <a href="#projects" class="nav-link" onclick="setActive(this)">04 — Projects</a>
+    <a href="#interests" class="nav-link" onclick="setActive(this)">05 — Interests</a>
+  </nav>
+
+  <div class="portfolio">
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="eyebrow">Portfolio 2026</div>
+          <h1>
+            <span class="line line-1 glitch" data-text="NOFIL">NOFIL</span>
+            <span class="line line-2 glitch" data-text="KHAN">KHAN</span>
+          </h1>
+          <div class="tagline">Full Stack Developer & AI Enthusiast</div>
+          <div class="location">📍 Lahore, Pakistan — FAST-NUCES</div>
+          <div class="hero-cta">
+            <a href="https://github.com/nofilkhan1" target="_blank" class="btn btn-primary">
+              GitHub →
+            </a>
+            <a href="mailto:nofilkhan251@gmail.com" class="btn btn-secondary">
+              Email →
+            </a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="brutal-grid">
+            <div class="grid-cell gc-red"></div>
+            <div class="grid-cell gc-blue"></div>
+            <div class="grid-cell gc-green"></div>
+            <div class="grid-cell gc-orange"></div>
+            <div class="grid-cell gc-black"></div>
+            <div class="grid-cell gc-white"></div>
+            <div class="grid-cell gc-red"></div>
+            <div class="grid-cell gc-blue"></div>
+            <div class="grid-cell gc-green"></div>
+            <div class="grid-cell gc-orange"></div>
+            <div class="grid-cell gc-black"></div>
+            <div class="grid-cell gc-white"></div>
+            <div class="grid-cell gc-red"></div>
+            <div class="grid-cell gc-blue"></div>
+            <div class="grid-cell gc-green"></div>
+            <div class="grid-cell gc-orange"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section reveal" id="education">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <h2 class="section-title">Education</h2>
+      </div>
+      <div class="edu-card">
+        <h3>BS Computer Science</h3>
+        <p class="school">Fast National University (FAST-NUCES), Lahore</p>
+        <span class="grad">Undergraduate Student</span>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section reveal" id="skills">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>◼ Programming Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>◼ Frontend Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">React Native</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>◼ Backend Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>◼ Artificial Intelligence</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">LLM Integration</span>
+            <span class="skill-tag">Vector Search</span>
+            <span class="skill-tag">Document Processing</span>
+            <span class="skill-tag">AI Chat Apps</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>◼ Mobile Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Android</span>
+            <span class="skill-tag">React Native</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>◼ Database & Tools</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Supabase</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section reveal" id="projects">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <div class="projects-grid" id="projects-grid"></div>
+    </section>
+
+    <!-- Interests -->
+    <section class="section reveal" id="interests">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <h2 class="section-title">Interests</h2>
+      </div>
+      <div class="interests-grid" id="interests-grid"></div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>◼ Built by Nofil Khan ◼ 2026 ◼ All Rights Reserved ◼</p>
+    <div class="footer-links">
+      <a href="https://github.com/nofilkhan1" target="_blank" class="footer-link" title="GitHub" aria-label="GitHub">
+        GH
+      </a>
+      <a href="mailto:nofilkhan251@gmail.com" class="footer-link" title="Email" aria-label="Email">
+        @
+      </a>
+      <a href="https://www.linkedin.com/in/nofil-khan-975333301/" target="_blank" class="footer-link" title="LinkedIn" aria-label="LinkedIn">
+        IN
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Projects data with detailed descriptions
+    const projects = [
+      { num: "01", title: "Zeno-AI", repo: "nofilkhan1/Zeno-AI", desc: "A fully-featured AI chat application built from the ground up with modern LLM integration. Supports multi-turn intelligent conversations, context-aware responses, and real-time streaming. Built with Next.js and integrated with OpenAI and open-source model APIs for flexible AI capabilities." },
+      { num: "02", title: "Lahore to Islamabad", repo: "nofilkhan1/Lahore-to-Islamabad", desc: "A 2D side-scrolling adventure game inspired by the iconic Lahore to Islamabad motorway journey. Features custom sprite animation, collision detection, progressive difficulty levels, and score tracking. Built using vanilla JavaScript with HTML5 Canvas for smooth 60fps gameplay." },
+      { num: "03", title: "Portfolio Website", repo: "nofilkhan1/nofilkhan1.github.io", desc: "This very portfolio you are browsing right now. A fully responsive, statically-generated personal site showcasing projects, technical skills, and professional background. Built with raw HTML, CSS, and JavaScript — zero frameworks, maximum performance. Deployed on GitHub Pages." },
+      { num: "04", title: "Expense Tracker", repo: "nofilkhan1/Expense-tracker", desc: "A comprehensive finance management application for tracking daily expenses, income streams, and monthly budgets. Features data visualization with charts, category-based filtering, export to CSV, and local storage persistence. Built with React and Chart.js for an intuitive financial overview." },
+      { num: "05", title: "Ecommerce Frontend", repo: "nofilkhan1/ecommerce_app_next-js", desc: "A production-grade ecommerce storefront built with Next.js 14. Features product catalog with filtering and search, shopping cart with state management, user authentication flow, checkout process, and fully responsive design optimized for mobile and desktop experiences." },
+      { num: "06", title: "Ecommerce Backend", repo: "nofilkhan1/ecommerce_app_fastapi", desc: "A robust RESTful API powering an ecommerce platform. Built with FastAPI and Python, featuring JWT authentication, product CRUD operations, order management, inventory tracking, and database integration with SQLAlchemy. Includes comprehensive API documentation with Swagger UI." },
+      { num: "07", title: "RAG in Next.js", repo: "nofilkhan1/RAG-in-next-js", desc: "A Retrieval-Augmented Generation system integrated into a Next.js application. Upload documents, automatically chunk and embed them using vector databases, then query with natural language to get AI-powered answers grounded in your data. Built with Pinecone, OpenAI embeddings, and Vercel AI SDK." },
+      { num: "08", title: "Grocery App", repo: "nofilkhan1/Grocery-app", desc: "A mobile-first grocery shopping application with product browsing, category navigation, search functionality, and a persistent shopping cart. Features a clean, modern UI with smooth transitions. Built with React Native for cross-platform deployment on both iOS and Android." },
+      { num: "09", title: "Quiz Ripple", repo: "nofilkhan1/quiz-ripple", desc: "An interactive online quiz platform supporting multiple question categories, timed gameplay modes, real-time score tracking, and leaderboard rankings. Features a sleek UI with animated transitions between questions and instant feedback on answers. Built with React and Firebase." },
+      { num: "10", title: "DSA Visualizer", repo: "nofilkhan1/DSA-visualizer", desc: "An educational visualization tool that brings Data Structures and Algorithms to life. Watch sorting algorithms, tree traversals, graph searches, and pathfinding algorithms execute step-by-step with interactive controls for speed and input customization. Built with React and HTML5 Canvas." },
+      { num: "11", title: "Space Invaders (C++)", repo: "nofilkhan1/space-invaders-cpp", desc: "A faithful recreation of the classic Space Invaders arcade game written entirely in C++. Demonstrates object-oriented programming principles, game loop architecture, real-time input handling, and console-based graphics rendering. Features multiple enemy waves, player lives, and increasing difficulty." },
+      { num: "12", title: "Chapter RAG", repo: "nofilkhan1/Chapter-RAG", desc: "An intelligent document analysis tool that performs Retrieval-Augmented Generation on book chapters and long-form text. Upload a PDF, automatically segment it into semantic chunks, embed them into a vector store, and ask questions to receive precise, contextually-grounded answers with source citations." },
+      { num: "13", title: "Ecommerce (Vercel)", repo: "nofilkhan1/ecommerce_app_next-js-vercel", desc: "The production deployment variant of the ecommerce application, optimized for Vercel's edge network. Features server-side rendering for SEO, image optimization, incremental static regeneration for product pages, and edge middleware for geolocation-based features." },
+      { num: "14", title: "Weather API", repo: "nofilkhan1/weather-api", desc: "A weather dashboard application integrating external meteorological APIs to display real-time weather data. Features location search, 7-day forecast, hourly breakdowns, temperature charts, and weather alerts. Built with React and OpenWeatherMap API with responsive design for all devices." },
+      { num: "15", title: "FastAPI CRUD", repo: "nofilkhan1/fastapi_crud", desc: "A complete CRUD application demonstrating RESTful API best practices with FastAPI. Includes user registration and authentication, resource creation and management, pagination, filtering, input validation with Pydantic, and automated testing with pytest. Serves as a reference architecture for FastAPI projects." },
+      { num: "16", title: "QuizRipple (Alt)", repo: "nofilkhan1/quizripple", desc: "An alternative implementation of the QuizRipple platform exploring different architectural patterns. Features a modular component structure, custom hook-based state management, and an enhanced UI with dark mode support. Demonstrates iterative improvement and code refactoring practices." },
+      { num: "17", title: "Space Invaders Game", repo: "muhsameer92-art/Space_Invaders_Game", desc: "A collaborative Space Invaders game project featuring enhanced graphics, power-up systems, boss battles, and multiplayer scoreboards. Built with a focus on game design patterns and collaborative development workflows using Git for version control." },
+      { num: "18", title: "Candy Crush", repo: "nofilkhan1/Candy-Crush", desc: "A browser-based match-3 puzzle game inspired by Candy Crush. Features a colorful tile grid, swap-and-match mechanics, cascading combos, special candy power-ups, level progression with increasing difficulty, and score tracking with local leaderboard storage. Built with vanilla JavaScript and CSS animations." }
+    ];
+
+    // Interests data
+    const interests = [
+      "Artificial Intelligence",
+      "Generative AI",
+      "Large Language Models",
+      "RAG Systems",
+      "Full Stack Development",
+      "Software Engineering",
+      "Mobile App Development",
+      "Backend Development",
+      "Game Development",
+      "Data Structures & Algorithms"
+    ];
+
+    // Render projects
+    const projectsGrid = document.getElementById('projects-grid');
+    projects.forEach(p => {
+      const card = document.createElement('a');
+      card.className = 'project-card';
+      card.href = `https://github.com/${p.repo}`;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.innerHTML = `
+        <div class="project-bar"></div>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-num">${p.num}</div>
+            <div class="project-title">${p.title}</div>
+          </div>
+          <div class="project-repo">${p.repo}</div>
+          <p class="project-desc">${p.desc}</p>
+        </div>
+        <div class="project-footer">
+          <span>View Project</span>
+          <span class="project-arrow">→</span>
+        </div>
+      `;
+      projectsGrid.appendChild(card);
+    });
+
+    // Render interests
+    const interestsGrid = document.getElementById('interests-grid');
+    interests.forEach(text => {
+      const pill = document.createElement('div');
+      pill.className = 'interest-pill';
+      pill.textContent = text;
+      interestsGrid.appendChild(pill);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Navbar active state
+    function setActive(el) {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Auto-update navbar on scroll
+    const sections = document.querySelectorAll('section[id], .hero[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 150) {
+          current = section.getAttribute('id');
+        }
+      });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Glitch effect on hover for hero name
+    const glitchElements = document.querySelectorAll('.glitch');
+    glitchElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        el.style.animation = 'none';
+        setTimeout(() => {
+          el.style.animation = '';
+        }, 10);
+      });
+    });
+  </script>
+</body>
+</html>
