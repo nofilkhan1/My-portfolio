@@ -701,13 +701,20 @@
     }
 
     /* ===== SCROLL REVEAL ===== */
+    /* Content is visible by default; only hidden when JS is confirmed working,
+       so sections (e.g. projects) can never get stuck invisible on any device. */
     .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    html.js .reveal {
       opacity: 0;
       transform: translateY(50px);
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .reveal.visible {
+    html.js .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -769,18 +776,240 @@
     }
 
     /* ===== RESPONSIVE ===== */
+    /* Prevent grid children from blowing out the viewport width */
+    .hero-grid > *,
+    .skills-grid > *,
+    .projects-grid > *,
+    .section-header {
+      min-width: 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { gap: 48px; }
+      .hero-left h1 { font-size: 64px; }
+    }
+
     @media (max-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero-left h1 { font-size: 56px; letter-spacing: -2px; }
-      .brutal-grid { grid-template-columns: repeat(4, 50px); grid-template-rows: repeat(4, 50px); gap: 6px; }
-      .navbar { overflow-x: auto; }
-      .nav-link { padding: 14px 18px; font-size: 11px; letter-spacing: 1px; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .section { padding: 60px 24px; }
-      .section-title { font-size: 32px; }
-      .edu-card { padding: 32px; }
-      .edu-card h3 { font-size: 26px; }
+      .hero {
+        padding: 64px 20px 56px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .hero-left h1 {
+        font-size: 52px;
+        letter-spacing: -2px;
+      }
+
+      .hero-left .tagline {
+        font-size: 13px;
+        letter-spacing: 1px;
+        padding: 12px 18px;
+        white-space: normal;
+        line-height: 1.4;
+        box-shadow: 6px 6px 0 var(--shadow);
+      }
+
+      .hero-left .location {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 28px;
+      }
+
+      .hero-cta {
+        gap: 12px;
+      }
+
+      .btn {
+        flex: 1 1 100%;
+        justify-content: center;
+        padding: 16px 20px;
+        text-align: center;
+      }
+
+      .brutal-grid {
+        grid-template-columns: repeat(4, 44px);
+        grid-template-rows: repeat(4, 44px);
+        gap: 6px;
+      }
+
+      .navbar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .navbar::-webkit-scrollbar { display: none; }
+
+      .nav-link {
+        padding: 14px 18px;
+        font-size: 11px;
+        letter-spacing: 1px;
+        white-space: nowrap;
+      }
+
+      .section {
+        padding: 56px 20px;
+      }
+
+      .section-header {
+        gap: 14px;
+        margin-bottom: 36px;
+        flex-wrap: wrap;
+      }
+
+      .section-num {
+        padding: 8px 14px;
+        font-size: 12px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        letter-spacing: -1px;
+      }
+
+      .edu-card {
+        padding: 28px 24px;
+      }
+
+      .edu-card h3 {
+        font-size: 24px;
+      }
+
+      .edu-card .school {
+        font-size: 13px;
+        letter-spacing: 1px;
+        line-height: 1.5;
+      }
+
+      .edu-card::before,
+      .skill-card::before,
+      .interest-pill::before {
+        display: none;
+      }
+
+      .edu-card:hover,
+      .skill-card:hover,
+      .interest-pill:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .skill-card {
+        padding: 24px 20px;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .project-body {
+        padding: 24px 20px;
+        gap: 12px;
+      }
+
+      .project-header {
+        gap: 12px;
+      }
+
+      .project-num {
+        font-size: 26px;
+        min-width: 44px;
+      }
+
+      .project-title {
+        font-size: 19px;
+        line-height: 1.25;
+      }
+
+      .project-repo {
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 7px 12px;
+        word-break: break-all;
+      }
+
+      .project-desc {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .project-footer {
+        padding: 14px 20px;
+      }
+
+      .project-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .interest-pill {
+        padding: 14px 20px;
+        font-size: 12px;
+      }
+
+      .footer {
+        padding: 56px 20px;
+      }
+
+      .footer-links {
+        gap: 14px;
+      }
+
+      .footer-link {
+        width: 54px;
+        height: 54px;
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .marquee {
+        font-size: 11px;
+        letter-spacing: 1px;
+      }
+
+      .hero-left h1 {
+        font-size: 42px;
+        letter-spacing: -1.5px;
+      }
+
+      .hero-left h1 .line-2 {
+        text-decoration-thickness: 6px;
+      }
+
+      .hero-left .eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
+
+      .brutal-grid {
+        grid-template-columns: repeat(4, 38px);
+        grid-template-rows: repeat(4, 38px);
+        gap: 5px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .project-title {
+        font-size: 17px;
+      }
+
+      .project-num {
+        min-width: 38px;
+      }
+
+      .footer p {
+        font-size: 11px;
+        letter-spacing: 2px;
+      }
     }
   </style>
 </head>
@@ -960,6 +1189,9 @@
   </footer>
 
   <script>
+    // Flag that JS is working; reveal animations only apply when this class exists
+    document.documentElement.classList.add('js');
+
     // Projects data with detailed descriptions
     const projects = [
       { num: "01", title: "Zeno-AI", repo: "nofilkhan1/Zeno-AI", desc: "A fully-featured AI chat application built from the ground up with modern LLM integration. Supports multi-turn intelligent conversations, context-aware responses, and real-time streaming. Built with Next.js and integrated with OpenAI and open-source model APIs for flexible AI capabilities." },
@@ -1031,16 +1263,28 @@
       interestsGrid.appendChild(pill);
     });
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
+    // Scroll reveal (with fallbacks so content is never left hidden)
+    function revealAll() {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Safety net: force everything visible shortly after load
+      setTimeout(revealAll, 2000);
+    } else {
+      revealAll();
+    }
 
     // Navbar active state
     function setActive(el) {
