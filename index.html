@@ -19,9 +19,18 @@
       --shadow: #1a1a1a;
     }
 
+    html[data-theme="dark"] {
+      --bg: #111111;
+      --fg: #f4f1ea;
+      --border: #f4f1ea;
+      --shadow: #000000;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
+
+    html, body { transition: background-color 0.25s ease, color 0.25s ease; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -74,6 +83,27 @@
       padding: 0;
       display: flex;
       flex-wrap: wrap;
+    }
+
+    .theme-toggle {
+      margin-left: auto;
+      padding: 18px 24px;
+      font-family: Space Mono, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--fg);
+      background: transparent;
+      border: 0;
+      border-left: 4px solid var(--border);
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--fg);
+      color: var(--bg);
     }
 
     .nav-link {
@@ -1012,6 +1042,12 @@
       }
     }
   </style>
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      if (savedTheme === "dark") document.documentElement.dataset.theme = "dark";
+    })();
+  </script>
 </head>
 <body>
   <!-- Noise Overlay -->
@@ -1029,6 +1065,8 @@
     <a href="#skills" class="nav-link" onclick="setActive(this)">03 — Skills</a>
     <a href="#projects" class="nav-link" onclick="setActive(this)">04 — Projects</a>
     <a href="#interests" class="nav-link" onclick="setActive(this)">05 — Interests</a>
+
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">☾ Dark</button>
   </nav>
 
   <div class="portfolio">
@@ -1191,6 +1229,22 @@
   <script>
     // Flag that JS is working; reveal animations only apply when this class exists
     document.documentElement.classList.add('js');
+
+    // Light/dark theme toggle
+    const themeToggle = document.getElementById("theme-toggle");
+    function updateThemeButton() {
+      const dark = document.documentElement.dataset.theme === "dark";
+      themeToggle.textContent = dark ? "☀ Light" : "☾ Dark";
+      themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      themeToggle.setAttribute("aria-pressed", String(dark));
+    }
+    updateThemeButton();
+    themeToggle.addEventListener("click", () => {
+      const dark = document.documentElement.dataset.theme !== "dark";
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+      localStorage.setItem("portfolio-theme", dark ? "dark" : "light");
+      updateThemeButton();
+    });
 
     // Projects data with detailed descriptions
     const projects = [
