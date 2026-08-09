@@ -1206,10 +1206,10 @@
       { num: "10", title: "DSA Visualizer", repo: "nofilkhan1/DSA-visualizer", desc: "An educational visualization tool that brings Data Structures and Algorithms to life. Watch sorting algorithms, tree traversals, graph searches, and pathfinding algorithms execute step-by-step with interactive controls for speed and input customization. Built with React and HTML5 Canvas." },
       { num: "11", title: "Space Invaders (C++)", repo: "nofilkhan1/space-invaders-cpp", desc: "A faithful recreation of the classic Space Invaders arcade game written entirely in C++. Demonstrates object-oriented programming principles, game loop architecture, real-time input handling, and console-based graphics rendering. Features multiple enemy waves, player lives, and increasing difficulty." },
       { num: "12", title: "Chapter RAG", repo: "nofilkhan1/Chapter-RAG", desc: "An intelligent document analysis tool that performs Retrieval-Augmented Generation on book chapters and long-form text. Upload a PDF, automatically segment it into semantic chunks, embed them into a vector store, and ask questions to receive precise, contextually-grounded answers with source citations." },
-      { num: "13", title: "Ecommerce (Vercel)", repo: "nofilkhan1/ecommerce_app_next-js-vercel", desc: "The production deployment variant of the ecommerce application, optimized for Vercel's edge network. Features server-side rendering for SEO, image optimization, incremental static regeneration for product pages, and edge middleware for geolocation-based features." },
+      { num: "13", title: "Ecommerce (Vercel)", repo: "nofilkhan1/ecommerce_app_next-js-cercel", desc: "The production deployment variant of the ecommerce application, optimized for Vercel's edge network. Features server-side rendering for SEO, image optimization, incremental static regeneration for product pages, and edge middleware for geolocation-based features." },
       { num: "14", title: "Weather API", repo: "nofilkhan1/weather-api", desc: "A weather dashboard application integrating external meteorological APIs to display real-time weather data. Features location search, 7-day forecast, hourly breakdowns, temperature charts, and weather alerts. Built with React and OpenWeatherMap API with responsive design for all devices." },
       { num: "15", title: "FastAPI CRUD", repo: "nofilkhan1/fastapi_crud", desc: "A complete CRUD application demonstrating RESTful API best practices with FastAPI. Includes user registration and authentication, resource creation and management, pagination, filtering, input validation with Pydantic, and automated testing with pytest. Serves as a reference architecture for FastAPI projects." },
-      { num: "16", title: "Candy Crush", repo: "nofilkhan1/Candy-Crush", desc: "A match-3 puzzle game inspired by Candy Crush, written entirely in C++. Features a colorful tile grid, swap-and-match mechanics, cascading combos, special candy power-ups, level progression with increasing difficulty, and score tracking. Demonstrates core C++ programming, game loops, and data structure handling." }
+      { num: "16", title: "Candy Crush", repo: null, desc: "A match-3 puzzle game inspired by Candy Crush, written entirely in C++. Features a colorful tile grid, swap-and-match mechanics, cascading combos, special candy power-ups, level progression with increasing difficulty, and score tracking. Demonstrates core C++ programming, game loops, and data structure handling." }
     ];
 
     // Interests data
@@ -1229,11 +1229,13 @@
     // Render projects
     const projectsGrid = document.getElementById('projects-grid');
     projects.forEach(p => {
-      const card = document.createElement('a');
+      const card = document.createElement(p.repo ? 'a' : 'div');
       card.className = 'project-card';
-      card.href = `https://github.com/${p.repo}`;
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
+      if (p.repo) {
+        card.href = `https://github.com/${p.repo}`;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+      }
       card.innerHTML = `
         <div class="project-bar"></div>
         <div class="project-body">
@@ -1241,12 +1243,12 @@
             <div class="project-num">${p.num}</div>
             <div class="project-title">${p.title}</div>
           </div>
-          <div class="project-repo">${p.repo}</div>
+          <div class="project-repo">${p.repo ? p.repo : 'Repo coming soon'}</div>
           <p class="project-desc">${p.desc}</p>
         </div>
         <div class="project-footer">
-          <span>View Project</span>
-          <span class="project-arrow">→</span>
+          <span>${p.repo ? 'View Project' : 'Coming Soon'}</span>
+          <span class="project-arrow">${p.repo ? '→' : ''}</span>
         </div>
       `;
       projectsGrid.appendChild(card);
